@@ -106,6 +106,10 @@ services:
     image: docker.io/pglombardo/pwpush:stable
     restart: unless-stopped
 
+    # Load environment variables from .env file
+    env_file:
+      - .env
+
     # Port mapping:
     # - Port 80: HTTP traffic (redirects to HTTPS if TLS_DOMAIN is set)
     # - Port 443: HTTPS traffic (TLS termination handled by container's web server)
@@ -114,8 +118,9 @@ services:
     # WARNING: Ensure ports 80 and 443 are not already in use on your host system.
     # If they are, change the left side of the mapping (e.g., "8080:80" for HTTP).
     ports:
-      - "80:80"
-      - "443:443"
+#      - "80:80"
+#      - "443:443"
+      - "5100:5100"
       # - Port 5100: Internal application port (exposed but typically not mapped to host)
 
     volumes:
